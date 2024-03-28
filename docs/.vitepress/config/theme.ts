@@ -8,7 +8,7 @@ export const themeConfig: DefaultTheme.Config = {
   nav, // 导航栏配置
   sidebar, // 侧边栏配置
 
-  logo: '/logo.png',
+  logo: '/title.png',
   outline: {
     level: 'deep', // 右侧大纲标题层级
     label: '目录', // 右侧大纲标题文本配置
@@ -64,7 +64,7 @@ export const themeConfig: DefaultTheme.Config = {
   // 自定义扩展: 文章元数据配置
   // @ts-ignore
   articleMetadataConfig: {
-    author: '查尔斯', // 文章全局默认作者名称
+    author: 'CN-Z', // 文章全局默认作者名称
     authorLink: '/about/me', // 点击作者名时默认跳转的链接
     showViewCount: false, // 是否显示文章阅读数, 需要在 docs/.vitepress/theme/api/config.js 及 interface.js 配置好相应 API 接口
   },
@@ -80,7 +80,7 @@ export const themeConfig: DefaultTheme.Config = {
   },
   // 自定义扩展: 页脚配置
   footerConfig: {
-    showFooter: true, // 是否显示页脚
+    showFooter: false, // 是否显示页脚
     icpRecordCode: '津ICP备2022005864号-2', // ICP备案号
     publicSecurityRecordCode: '津公网安备12011202000677号', // 联网备案号
     copyright: `Copyright © 2019-${new Date().getFullYear()} Charles7c` // 版权信息

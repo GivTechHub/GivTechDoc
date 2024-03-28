@@ -1,13 +1,13 @@
 ---
 layout: home
 
-title: 查尔斯的知识库
+title: GivTech
 titleTemplate: 个人技术知识库，记录和分享个人碎片化、结构化、体系化的技术知识内容
 
 hero:
-  name: 查尔斯的知识库
-  text: 专注 & 洞察 & 分享
-  tagline: 个人技术知识库，记录 & 分享个人碎片化、结构化、体系化的技术知识内容。
+  name: GivTech
+  text: 数字公益 | 爱心捐赠
+  tagline: 基于 FISCO BCOS 金链盟的慈善公益可溯源 Pass 平台，一站式构建与部署，让服务更轻量。
   image:
     src: /logo.png
     alt: Logo
@@ -21,15 +21,15 @@ hero:
 
 features:
   - icon:
-      src: img/svg/focus.svg
-    title: 保持专注
-    details: “简单比复杂更难，你必须努力让你的想法变得清晰明了，让它变得简单。一旦你做到了简单，你就能搬动大山。” -- 乔布斯
+      src: img/svg/touming.png
+    title: 公开透明
+    details: 基于FISCO BCOS的公益慈善平台确保捐款和资助的透明度，每笔交易都被记录在不可篡改的区块链上，捐赠者和受益者可以随时查看资金流向。
   - icon:
-      src: img/svg/insight.svg
-    title: 善于洞察
-    details: “我既没有突出的理解力，也没有过人的机智。只在觉察那些稍纵即逝的事物并对其进行精细观察的能力上，我可能在普通人之上。” -- 达尔文
+      src: img/svg/docker.png
+    title: 轻量便捷
+    details: 基于容器化的环境，让部署更快捷、高效，通过实现跨平台、一致性的部署，让用户更轻松的体验产品，提高用户的服务质量。
   - icon:
-      src: img/svg/knowledge.svg
-    title: 乐于分享
-    details: 关于分享，有形的物品越分越少，无形的知识越分越多。在记录与分享的过程中, 梳理所学, 交流所得, 必有所获。
+      src: img/svg/blockchain.png
+    title: 去中心化
+    details: 通过去中心化的交易和数据存储，消除了中间环节，降低了运营成本。这种技术提高了活动执行的效率和透明度。
 ---
