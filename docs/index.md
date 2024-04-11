@@ -2,7 +2,7 @@
 layout: home
 
 title: GivTech
-titleTemplate: 个人技术知识库，记录和分享个人碎片化、结构化、体系化的技术知识内容
+titleTemplate: 基于 FISCO BCOS 金链盟的慈善公益可溯源 Pass 平台
 
 hero:
   name: GivTech
@@ -14,10 +14,10 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /categories/issues/index
+      link: /categories/start/index
     - theme: alt
       text: 在 GitHub 查看
-      link: https://github.com/Charles7c/charles7c.github.io
+      link: https://github.com/CN-ZHANGYH/GYCS-SZGY
 
 features:
   - icon:

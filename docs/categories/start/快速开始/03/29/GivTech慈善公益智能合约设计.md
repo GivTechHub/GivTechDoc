@@ -19,11 +19,11 @@ tags:
 - 捐赠资金溯源上链合约：**DonationTrace**
 - 角色权限管理合约：**RoleAuth**
 
-![img](https://yw742c34bos.feishu.cn/space/api/box/stream/download/asynccode/?code=Y2Q0ZTdiOTk4N2UwNjM3ZTNmYmI2ZWZjNDIwNDVkZmFfMzVpTGtBbWdiamlNVlBGV3lkcmE0VmFkcmI4ZnVsd1hfVG9rZW46VUpyQ2JpZ2Jvb2NJZFB4OGVDYmM1UUl6bjNkXzE3MTE2Mjk0ODg6MTcxMTYzMzA4OF9WNA)
+![image-20240330231541740](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240330231541740.png?imageSlim)
 
 ## 2.合约用例图设计
 
-![img](https://yw742c34bos.feishu.cn/space/api/box/stream/download/asynccode/?code=M2M4MGQ4ZDNlZTE5M2Q1YWY4ZmQwYWM1ZTcxMmNkMDJfa3kwRFRiQ2ZIandDUnFIbWZ3YUFpWkYyYll4ZDZldHlfVG9rZW46T1hzUmJ6SkFyb2c0cER4SXpMbGNXQTBGbjJmXzE3MTE2Mjk0ODg6MTcxMTYzMzA4OF9WNA)
+![7b3ec86c-f415-4069-92e3-5b03c9fcc10b](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/7b3ec86c-f415-4069-92e3-5b03c9fcc10b.png?imageSlim)
 
 ## 3.合约功能设计
 
