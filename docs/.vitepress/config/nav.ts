@@ -4,10 +4,10 @@ export const nav: DefaultTheme.Config['nav'] = [
   {
     text: '快速开始',
     items: [
-      { text: '智能合约设计', link: '/categories/start/快速开始/03/29/GivTech慈善公益智能合约设计', activeMatch: '/categories/start/' },
-      { text: '后端开发设计', link: '/categories/start/快速开始/03/29/GivTech慈善公益后端项目设计', activeMatch: '/categories/start/' },
-      { text: '前端开发设计', link: '/categories/start/快速开始/03/29/GivTech慈善公益前端项目设计', activeMatch: '/categories/start/' },
-      { text: '运维部署设计', link: '/categories/start/快速开始/03/29/GivTech慈善公益运维部署设计', activeMatch: '/categories/start/' }
+      { text: '智能合约设计', link: '/categories/start/系统模块/03/29/GivTech慈善公益智能合约设计', activeMatch: '/categories/start/' },
+      { text: '后端开发设计', link: '/categories/start/系统模块/03/29/GivTech慈善公益后端项目设计', activeMatch: '/categories/start/' },
+      { text: '前端开发设计', link: '/categories/start/系统模块/03/29/GivTech慈善公益前端项目设计', activeMatch: '/categories/start/' },
+      { text: '运维部署设计', link: '/categories/start/系统模块/03/29/GivTech慈善公益运维部署设计', activeMatch: '/categories/start/' }
     ],
     activeMatch: '/categories/'
   },
