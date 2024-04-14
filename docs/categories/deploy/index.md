@@ -76,7 +76,7 @@ showComment: false
     $ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose
 ```
 
-配置阿里云镜像加速，阿里云镜像加速地址： https://ably8t50.mirror.aliyuncs.com：
+配置阿里云镜像加速，阿里云镜像加速地址： `https://ably8t50.mirror.aliyuncs.com`：
 
 ```bash
 $ vim  /etc/docker/daemon.json
@@ -158,7 +158,7 @@ Type 'help' or 'h' for help. Type 'quit' or 'q' to quit console.
 [root@centos:~/work]# cd webase-front && bash start.sh 
 ```
 
-访问当前的http://localhost:5002/WeBASE-Front平台。
+> 访问当前的`http://localhost:5002/WeBASE-Front`平台。
 
 ![image-20240414182805386](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240414182805386.png)
 
@@ -387,10 +387,10 @@ services:
 
 ## 五、访问项目
 
-访问http://localhost访问前端是否正常。
+访问`http://localhost`访问前端是否正常。
 
 ![image-20240414164925785](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240414164925785.png)
 
-访问http://localhost:8089查看后端管理平台是否运行正常。
+访问`http://localhost:8089`查看后端管理平台是否运行正常。
 
 ![image-20240414172129858](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240414172129858.png)
