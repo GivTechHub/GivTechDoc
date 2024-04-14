@@ -1,143 +1,181 @@
-[English](./README.en.md) | 中文
+# 🌍GivTech平台介绍
 
-# 查尔斯的知识库
+## 一、项目介绍
 
-<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
-    <img src="https://img.shields.io/badge/文章%20License-CC%204.0%20BY--SA-blue.svg">
-</a>
-<a href="https://github.com/Charles7c/charles7c.github.io/blob/main/LICENSE" target="_blank">
-    <img src="https://img.shields.io/badge/源码%20License-MIT-blue.svg">
-</a>
-<a href="https://github.com/Charles7c/charles7c.github.io/actions/workflows/deploy-pages.yml" target="_blank">
-    <img src="https://github.com/Charles7c/charles7c.github.io/actions/workflows/deploy-pages.yml/badge.svg">
-</a>
+::: tip 项目介绍
+
+GivTech慈善公益可溯源平台基于FISCO BCOS的慈善公益全链路系统,**基于区块链的慈善公益适用于需要保证捐款信息安全性和透明度的场景**，因为区块链技术具备去中心化、不可篡改、安全可靠等特点，可以确保慈善捐款信息不被篡改。同时，使用基于区块链的慈善公益系统还可以提高捐款过程中的效率和透明度，保障捐款人权益，增强慈善机构的信誉和管理能力。因此，基于区块链的慈善公益适用于各种需要捐款和资金流转的公益场景。
+
+:::
 
 
-📝 **查尔斯的个人技术知识库，记录 & 分享个人碎片化、结构化、体系化的技术知识内容。** 
 
-🐢 [GitHub Pages（完整体验）](https://blog.charles7c.top) | 🐇 [Gitee Pages（无法评论）](https://charles7c.gitee.io)
+## **二、项目背景**
 
-## 开始
+**当前公益慈善组织面临突出问题**
 
-```bash
-# 1.克隆本仓库
-git clone https://github.com/Charles7c/charles7c.github.io.git
-# 2.安装 PNPM
-npm install pnpm -g
-# 3.设置淘宝镜像源
-pnpm config set registry https://registry.npmmirror.com/
-# 4.安装依赖
-pnpm install
-# 5.dev 运行，访问：http://localhost:5173
-pnpm dev
-# 6.打包，文件存放位置：docs/.vitepress/dist
-# 如果是部署到 GitHub Pages，可以利用 GitHub Actions，在 push 到 GitHub 后自动部署打包
-# 详情见：.github/workflows/deploy-pages.yml，根据个人需要删减工作流配置
-pnpm build
-# 7.部署
-# 7.1 push 到 GitHub 仓库，部署到 GitHub Pages：需要在仓库设置中启用 GitHub Pages（本仓库采用此种部署方式）
-# 7.2 在其他平台部署, 例如：Gitee Pages、Vercel、Netlify、个人虚拟主机、个人服务器等
-```
+我进行了查阅以及调查，总结了如下几点,从知乎上查阅到：https://zhuanlan.zhihu.com/p/150063012
 
-## 已扩展功能（持续优化细节）
+**信息公开程度低，监管缺乏手段**传统公益慈善组织的信息公开透明度低，监管机制缺位，公信力不足。据调查，公益组织的“资金去向与使用状况”以及“善款来源”是公众关注的焦点，而传统公益机构经常信息披露不足。从本次疫情爆发的红十字会事件来看，由于物资来源不透明、去向不可知、信息公开不及时，以及政府对慈善组织的监管手段缺乏、社会监督力量薄弱，导致红十字会公信力下降，影响了公众对公益组织的信心与支持度。
 
-- [x] 拆分配置文件：解决“大”配置文件问题，提取公有配置选项进行复用，方便维护
+“互联网+公益”无法解决信用问题“互联网+公益”创新模式已经被用到实践中，但是同样面临信用风险和监管问题。随着互联网技术的发展，网络公益众筹平台如轻松筹、水滴筹、爱心筹等快速发展，一方面有效帮助了数以万计的困难群众，缓解了政府的财政压力；另一方面也暴露出一些问题，互联网的开放性特征，使得众筹平台难以对发起者与受益者的信息进行有效筛查，个别求助者虚构病情、部分平台线上业务流程不合规、用户数据被滥用、个别平台涉嫌非法筹集资金等问题频现。这不仅对捐助者的基本权益造成了侵害，同时也削弱了群众对于网络公益众筹活动的信任，制约了公益事业的可持续发展。
 
-- [x] GitHub Actions：push 到 GitHub，自动进行项目打包及 GitHub Pages 部署，并同步到 Gitee Pages（可根据个人需要自行删减同步 Gitee Pages 部分工作流配置）
+因此，急需一种合适的技术手段或合理的机制来解决社会民众持续增长的公益慈善需求与当前公益慈善组织公信力不足之间的矛盾。
 
-- [x] 自动生成侧边栏：将文章按规律性目录存放后，侧边栏将自动生成，支持文章置顶🔝（在文章 frontmatter 中配置 `isTop: true`，即可在侧边栏自动出现置顶分组）
+**区块链可以实现有效的激励，具有价值优势**公益项目的参与方是不同利益主体，需要尽可能照顾各方利益，才能激发更多参与者的积极性。如在本次疫情中，存在很多社会志愿者和慈善人士。由于公益项目的非营利性，吸引各方积极参与的不再是经济利益的分配，参与方的出发点可能是同情心、家乡情、社会声誉、个人英雄主义、企业文化、社会研究等。面对参与者的不同出发点，区块链的激励相容机制可以实现多方利益的共赢，实现社会价值最大化。
 
-- [x] 主页美化：参照 vite 文档主页进行美化
+整个捐赠流程：
 
-- [x] 自定义页脚：支持ICP备案号、公安备案号、版权信息配置（符合大陆网站审核要求）
+![img](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/asynccode)
 
-- [x] 文章元数据信息显示：文章标题下显示是否原创、作者、发布时间、所属分类、标签列表等信息，可全局配置作者及作者主页信息
+基于区块链的慈善公益主要包括以下业务：
 
-  - [x] 已扩展文章阅读数信息，默认已启用，可在 docs/.vitepress/config/theme.ts 中 articleMetadataConfig 配置中关闭（开启需要自行提供并配置好 API 服务，API 服务可参考：[Charles7c/charles7c-api](https://github.com/Charles7c/charles7c-api)，目前来看搞起来还有点麻烦，不喜欢折腾的可以直接关闭或更换其他方式提供 API 服务，欢迎提建议）
-
-- [x] 《我的标签》：模仿语雀标签页风格，另有标签云展示。语雀标签页地址：https://www.yuque.com/r/语雀用户名/tags?tag=
-
-- [x] 《我的归档》：自定义时间轴，展示历史文章数据。年份前可展示生肖，还可按分类、标签筛选
-
-- [x] 文章评论：目前仅支持Gitalk
-
-- [x] 版权声明：文末显示原创或转载文章的版权声明，可自由配置采用的版权协议
-
-- [x] ~~徽章：标题后可显示徽章，此功能来自于 VitePress 未合并的 PR，如若后续被合并，则改用官方主题功能（[官方已合并于 v1.0.0-alpha.27](https://github.com/vuejs/vitepress/issues/1239)）~~
-
-- [x] ~~本地文档搜索支持：VitePress 官方目前仅提供了对接 algolia 的在线搜索配置，而且对接起来的流程也较为麻烦。所幸寻到一个本地文档搜索插件 [emersonbottero/vitepress-plugin-search](https://github.com/emersonbottero/vitepress-plugin-search)。目前对接了 [vitepress-plugin-pagefind](https://www.npmjs.com/package/vitepress-plugin-pagefind) 本地搜索插件，中文搜索相对友好一些，如需体验，可将 `docs/vite.config.ts` 文件中的注释去除掉。目前 VitePress 官方有一个 PR 正在处理离线搜索功能，再过段时间应该就能合并了，到时候体验一下试试看。~~ 
-
-  ~~注意：本地文档搜索和 algolia 搜索无法同时使用，开启本地文档搜索后 algolia 搜索配置将不再生效。~~ 
-
-- [x] Mermaid 流程图：在 Markdown 中绘制流程图、状态图、时序图、甘特图、饼图等，更多语法请参见：[Mermaid 官方文档](https://github.com/mermaid-js/mermaid/blob/develop/README.zh-CN.md) 。（Typora 编辑器也支持 `mermaid` 语法）
-
-- [x] Markdown 脚注、Markdown 公式支持
-
-- [x] 更多细节优化：敬请发现
-  - [x] 文章内图片增加圆角样式优化（[#56](https://github.com/Charles7c/charles7c.github.io/issues/56)）
-  - [x] 浏览器滚动条样式优化（支持 Firfox、谷歌系浏览器）（[#69](https://github.com/Charles7c/charles7c.github.io/pull/69)）
-  - [x] 侧边栏分组中的文章列表增加序号显示
-  - [x] ......
+1. **捐款管理**：基于区块链技术，建立一个去中心化的捐款管理系统，确保捐款信息不被篡改、数据的可靠性和安全性。捐款人可以通过区块链平台进行捐款记录的查询，以保证公示的透明度和真实性。
+2. **资金用途追踪**：通过区块链技术实现对慈善捐赠资金的流向追踪和监管，确保资金的合法使用。比如，将慈善机构的账户信息与区块链相结合，建立一个跨机构的资金追踪平台，对慈善基金的使用情况进行实时监控。
+3. **慈善项目管理**：为慈善活动和项目建立智能合约，实现自动化执行和程序化管理，避免了人为操作引起的错误和不公平。同时，也可以通过区块链平台发布慈善项目，方便社会各界了解并参与慈善事业。
+4. **公示与评估**：在区块链平台上公示捐款信息和慈善项目进展情况，方便公众对慈善机构的评估和监督。同时可以建立一个可追溯的财务系统，使得慈善机构的账目记录和审核更加标准化和规范化。
 
 
-## 部分页面截图
 
-### 主页美化
+## 三、项目技术栈
 
-![主页](./docs/public/screenshot/主页.png)
+**前端技术栈**：
 
-### 侧边栏置顶分组（自动生成侧边栏及置顶分组）
+- HTML5+CSS3+Javascript
+- Vue3 + 自定义UI框架 + Axios
+- H5 + Uniapp端 (任选其一)
 
-![侧边栏置顶分组](./docs/public/screenshot/侧边栏置顶分组.png)
+**后端技术栈**：
 
-### 文章元数据信息
+- 开源管理系统：Ruoyi-tdesign RuoYi-Vue-Plus UI / TypeScript + SpringBoot
+- Java + SpringBoot + FISCO BCOS SDK 
+- MySQL + Redis + Rabbitmq 
+- Mybatis plus + RedisTemplate + RabbitmqTemplate 
 
-![文章元数据信息](./docs/public/screenshot/文章元数据信息.png)
+**合约技术栈**：
 
-### 我的标签
+- Solidity + Truffle + Caplier
+- 智能合约解决方案完整实例代码
+- 智能合约的测试报告，性能测试用例
 
-![我的标签](./docs/public/screenshot/我的标签1.png)
-![我的标签](./docs/public/screenshot/我的标签2.png)
+**运维技术栈**：
 
-### 我的归档
+- 全服务使用Docker部署：Mysql + Redis + Rabbitmq + FISCO BCOS  + Nginx + Java
+- 监控方案使用Granfana + Prometheus 进行数据监控
 
-![我的归档](./docs/public/screenshot/我的归档1.png)
-![我的归档](./docs/public/screenshot/我的归档2.png)
+**项目产品页面：**
 
-### 文章评论
+![image-20240411215133466](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240411215133466.png)
 
-![文章评论](./docs/public/screenshot/文章评论1.png)
-![文章评论](./docs/public/screenshot/文章评论2.png)
-![文章评论](./docs/public/screenshot/文章评论3.png)
+![image-20240411215216369](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240411215216369.png)
 
-### 版权声明
+![image-20240411215251477](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240411215251477.png)
 
-![版权声明](./docs/public/screenshot/版权声明.png)
+![image-20240411215305759](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240411215305759.png)
 
-### Mermaid 流程图
+![image-20240411215335594](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240411215335594.png)
 
-![Mermaid流程图](./docs/public/screenshot/Mermaid流程图1.png)
-![Mermaid流程图](./docs/public/screenshot/Mermaid流程图2.png)
 
-## 特别鸣谢
 
-- [vuejs/vitepress](https://github.com/vuejs/vitepress) （本知识库基于 VitePress 构建）
-- [vitejs/vite](https://github.com/vitejs/vite) （参考主页美化）
-- [windicss/docs](https://github.com/windicss/docs) （参考配置文件拆分）
-- [brc-dd/vitepress-blog-demo](https://github.com/brc-dd/vitepress-blog-demo) （感谢 VitePress 维护者 brc-dd 的热心帮助）
-- [brc-dd/vitepress-with-arco](https://github.com/brc-dd/vitepress-with-arco) 
-- [clark-cui/vitepress-blog-zaun](https://github.com/clark-cui/vitepress-blog-zaun) （参考文章标签的数据处理方案）
-- [dingqianwen/my-blog](https://github.com/dingqianwen/my-blog) （参考 Gitalk 配置暗黑主题）
-- [Dedicatus546/Dedicatus546.github.io](https://github.com/Dedicatus546/Dedicatus546.github.io) （参考 Gitalk 跨域调用 API 失效的解决方案）
-- [xiaoxian521/pure-admin-utils-docs](https://github.com/xiaoxian521/pure-admin-utils-docs) （参考词云组件的使用）
-- [arco-design/arco-design-vue](https://github.com/arco-design/arco-design-vue) （使用部分组件及图标）
-- [antvis/G2plot](https://github.com/antvis/G2plot) （使用部分图表）
-- [emersonbottero/vitepress-plugin-mermaid](https://github.com/emersonbottero/vitepress-plugin-mermaid) （VitePress Mermaid 流程图插件）
-- [mermaid-js/mermaid](https://github.com/mermaid-js/mermaid/blob/develop/README.zh-CN.md)
-- ......
+![image-20240411215421021](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240411215421021.png)
 
-## License
+![image-20240411215444215](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240411215444215.png)
 
-- 文章遵循[ CC 4.0 BY-SA ](http://creativecommons.org/licenses/by-sa/4.0/)版权协议，转载请附上原文出处链接和声明
-- 源码遵循 [MIT](https://github.com/Charles7c/charles7c.github.io/blob/main/LICENSE) 许可协议
-- Copyright © 2019-2022 Charles7c
+![image-20240411215507078](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240411215507078.png)
+
+
+
+
+
+
+
+![image-20240411215541349](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240411215541349.png)
+
+
+
+## 四、项目说明
+
+### 1. 项目地址
+
+| 项目名称         | 项目描述                    | 版本 | 项目地址                                |
+| ---------------- | --------------------------- | ---- | --------------------------------------- |
+| GYCS-Admin       | GivTech后台管理（后端）     | V1.0 | https://github.com/CN-ZHANGYH/GYCS-SZGY |
+| GYCS-Admin-Vue   | GivTech后台前端（前端）     | V1.0 | https://github.com/CN-ZHANGYH/GYCS-SZGY |
+| GYCS-Charity-Vue | GivTech慈善公益平台（前端） | V1.0 | https://github.com/CN-ZHANGYH/GYCS-SZGY |
+| CYCS-Contract    | GivTech慈善公益智能合约     | V1.0 | https://github.com/CN-ZHANGYH/GYCS-SZGY |
+
+
+
+### 2. 项目框架说明
+
+- Java 后端：`master` 分支为 JDK 8 + Spring Boot 2.7.18
+- Vue前端：前端采用的是Vue3 + Vuesax + Vite + Pinia
+- Solidity合约：智能合约使用的是Solidity6.10
+- 后端采用 Spring Boot 多模块架构、MySQL + MyBatis Plus、Redis + Redisson
+- 数据库可使用 MySQL、Oracle、PostgreSQL、SQL Server、MariaDB、国产达梦 DM、TiDB 等
+- 消息队列可使用 Event、Redis、RabbitMQ、Kafka、RocketMQ 等
+- 权限认证使用 Spring Security & Token & Redis，支持多终端、多种用户的认证系统，支持 SSO 单点登录
+- 支持加载动态权限菜单，按钮级别权限控制，Redis 缓存提升性能
+- 高效率开发，使用代码生成器可以一键生成 Java、Vue 前后端代码、SQL 脚本、接口文档，支持单表、树表、主子表
+- 集成阿里云、腾讯云等短信渠道，集成 MinIO、阿里云、腾讯云、七牛云等云存储服务
+
+
+
+### 3. 系统内置功能
+
+- 系统功能
+- 角色权限
+- 用户管理
+- 基础设施
+- 公益活动管理
+- 发布和审批
+
+
+
+### 4. 平台页面
+
+#### 4.1 用户端
+<div style="display: flex;justify-content: center;align-content: center;margin-left: 80px;">
+    <div style="box-shadow: 2px 1px 5px 2px rgba(0, 0, 0, 0.1);border-radius: 10px;height: auto;margin-top: 30px;width: 100%;">
+        <div style="display: flex;justify-content: space-between;padding: 10px 10px;margin-bottom: 30px;">
+            <div>
+                <img style="border-radius: 10px;" src="https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/%E5%8F%82%E4%B8%8E%E6%8A%95%E7%A5%A8%E9%A1%B5%E9%9D%A2.png?imageSlim" alt="" >
+            </div>
+            <div >
+                <img style="border-radius: 10px;" src="https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89%E6%BA%AF%E6%BA%90%E4%BF%A1%E6%81%AF.png?imageSlim" alt="">
+            </div>
+        </div>
+        <div style="display: flex;justify-content: space-between;padding: 10px 10px;margin-bottom: 30px;">
+            <div>
+                <img style="border-radius: 10px;" src="https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/%25E5%2585%25AC%25E7%259B%258A%25E6%258D%2590%25E6%25AC%25BE%25E4%25BA%25A4%25E6%2598%2593%25E6%25BA%25AF%25E6%25BA%2590%25E8%25AE%25B0%25E5%25BD%2595%25E5%259B%25BE.png?imageSlim      " alt="">
+            </div>
+            <div>
+                <img style="border-radius: 10px;" src="https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/%E5%85%AC%E7%9B%8A%E7%89%A9%E8%B5%84%E6%8D%90%E8%B5%A0%E6%BA%AF%E6%BA%90%E8%AE%B0%E5%BD%95%E5%9B%BE.png?imageSlim" alt="">
+            </div>
+        </div>
+        <div style="display: flex;justify-content: space-between;padding: 10px 10px;margin-bottom: 30px;">
+            <div>
+                <img style="border-radius: 10px;" src="https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/%E5%85%AC%E7%9B%8A%E7%89%A9%E8%B5%84%E6%8D%90%E8%B5%A0%E6%BA%AF%E6%BA%90%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF.png?imageSlim" alt="">
+            </div>
+            <div>
+                <img style="border-radius: 10px;" src="https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/%E9%93%B6%E8%A1%8C%E5%8D%A1%E8%BD%AC%E8%B4%A6%E8%AF%A6%E7%BB%86%E6%BA%AF%E6%BA%90%E4%BF%A1%E6%81%AF.png?imageSlim" alt="">
+            </div>
+        </div>
+        <div style="display: flex;justify-content: space-between;padding: 10px 10px;margin-bottom: 30px;">
+            <div>
+                <img style="border-radius: 10px;" src="https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/%E7%89%A9%E8%B5%84%E6%8D%90%E8%B5%A0%E9%A1%B5%E9%9D%A2.png?imageSlim" alt="">
+            </div>
+            <div>
+                <img style="border-radius: 10px;" src="https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/%E5%85%AC%E7%9B%8A%E6%8D%90%E6%AC%BE%E6%BA%AF%E6%BA%90%E8%AF%A6%E7%BB%86.png?imageSlim" alt="">
+            </div>
+        </div>
+        <div style="display: flex;justify-content: space-between;padding: 10px 10px;margin-bottom: 30px;">
+            <div>
+                <img style="border-radius: 10px;" src="https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/%E5%85%AC%E7%9B%8A%E6%8D%90%E6%AC%BE%E6%BA%AF%E6%BA%90%E8%AF%A6%E7%BB%86%E4%BA%A4%E6%98%93%E5%9B%9E%E6%89%A7.png?imageSlim" alt="">
+            </div>
+            <div>
+                <img style="border-radius: 10px;" src="https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/%E9%93%B6%E8%A1%8C%E5%8D%A1%E8%BD%AC%E8%B4%A6%E6%BA%AF%E6%BA%90%E6%9F%A5%E8%AF%A2.png?imageSlim" alt="">
+            </div>
+        </div>
+    </div>
+    </div>

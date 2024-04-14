@@ -1,156 +1,178 @@
 ---
-title: GivTech慈善公益运维部署设计
-author: 张宇豪
-date: 2024/3/29 23:30
-categories:
- - Docker
- - Linux
-tags:
- - Docker
- - Linux
+showArticleMetadata: false
+editLink: false
+lastUpdated: false
+showComment: false
 ---
 
+# 使用Docker快速部署GivTech
 
 
 
+> 环境说明
 
-# Docker一键部署GivTech平台
+| 操作系统 | 基础环境                          | 说明                                               |
+| -------- | --------------------------------- | -------------------------------------------------- |
+| Ubuntu   | Docker 20.10/Docker-Compose V2.2+ | 需要保证当前的基础环境有Docker和Docker-Compose环境 |
+| CentOS   | Docker 20.10/Docker-Compose V2.2+ | 需要保证当前的基础环境有Docker和Docker-Compose环境 |
 
 
 
-## 一、项目目录树
+## 一、基础环境
 
-如下是基于Docker-Compose一键部署的安装包以及目录说明：
+::: tip CentOS
 
-::: tip 部署脚本
-
-`docker-compose.yml`: Docker Compose 配置文件。
-
-:::
-
-::: tip 后端服务
-
-`gycs-admin`: 包含一个名为 gycs-admin 的子项目。
+1. 如果你是CentOS操作系统，请使用如下命令：
 
 :::
 
-- **bin**: 存放 `gycs-admin.jar` 可执行文件的目录。
-- **config**: 存放项目配置文件的目录。
-- data: 存放数据文件的目录。
-- **Dockerfile**: 用于构建 `gycs-admin` 的 Docker 镜像的文件。
-- **jdk-8u281-linux-x64.tar.gz**: JDK 的压缩文件。
-- **lib**: 存放项目依赖库的目录。
-- **logs**: 存放日志文件的目录。
-
-::: tip 后台管理项目UI
-
-`gycs-admin-vue3`: 包含一个名为 gycs-admin-vue3 的子项目。
-
-:::
-
-- **cert**: 存放证书文件的目录。
-- conf: 存放配置文件的目录。
-- dist: 存放项目编译后的文件的目录。
-- **Dockerfile**: 用于构建 `gycs-admin-vue3` 的 Docker 镜像的文件。
-- logs: 存放日志文件的目录。
-
-::: tip 前端项目UI
-
-`gycs-charity-vue3`: 包含一个名为 gycs-charity-vue3的子项目。
-
-:::
-
-- **cert**: 存放证书文件的目录。
-- conf: 存放配置文件的目录。
-- **Dockerfile**: 用于构建 `gycs-charity-vue3` 的 Docker 镜像的文件。
-- html: 存放 HTML 文件的目录。
-- logs: 存放日志文件的目录。
-
-::: tip 数据库服务
-
-`mysql`: 包含一个名为 mysql的子项目。
-
-:::
-
-- **Dockerfile**: 用于构建 MySQL 的 Docker 镜像的文件。
-- **gycs.sql**: 数据库初始化脚本。
-- **init_mysql.sh**: MySQL 初始化脚本。
-
-::: tip 缓存数据库服务
-
-`redis`: 包含一个名为 redis的子项目。
-
-:::
-
-- conf: 存放配置文件的目录。
-- data: 存放数据文件的目录。
-
-```shell
-[root@tencent GYCS-Docker]# tree -L 3 
-.
-├── docker-compose.yml
-├── gycs-admin
-│   ├── bin
-│   │   └── gycs-admin.jar
-│   ├── config
-│   ├── data
-│   │   └── file
-│   ├── Dockerfile
-│   ├── jdk-8u281-linux-x64.tar.gz
-│   ├── lib
-│   └── logs
-├── gycs-admin-vue3
-│   ├── cert
-│   │   ├── drill.wiki_bundle.crt
-│   │   ├── drill.wiki_bundle.pem
-│   │   ├── drill.wiki.csr
-│   │   └── drill.wiki.key
-│   ├── conf
-│   │   └── nginx.conf
-│   ├── dist
-│   │   ├── assets
-│   │   ├── favicon.ico
-│   │   ├── favicon.svg
-│   │   ├── index.html
-│   │   ├── index.html.gz
-│   │   └── ruoyi.zip
-│   ├── Dockerfile
-│   └── logs
-│       └── error.log
-├── gycs-charity-vue3
-│   ├── cert
-│   │   ├── drill.wiki_bundle.crt
-│   │   ├── drill.wiki_bundle.pem
-│   │   ├── drill.wiki.csr
-│   │   └── drill.wiki.key
-│   ├── conf
-│   │   └── charity-nginx.conf
-│   ├── Dockerfile
-│   ├── html
-│   │   ├── assets
-│   │   ├── favicon.ico
-│   │   ├── index.html
-│   │   ├── js
-│   │   └── nginx.htaccess
-│   └── logs
-│       ├── access.log
-│       └── error.log
-├── mysql
-│   ├── Dockerfile
-│   ├── gycs.sql
-│   └── init_mysql.sh
-└── redis
-    ├── conf
-    │   └── redis.conf
-    ├── data
-    │   ├── appendonlydir
-    │   └── README.md
-    └── logs
+```bash
+    # 安装基础的工具
+    $ yum install -y yum-utils device-mapper-persistent-data lvm2
+    
+    # 拉取Docker的镜像仓库
+    $ yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+    
+    # 更新当前的软件包
+    $ yum makecache fast
+    
+    # 安装Docker-ce
+    $ yum -y install docker-ce
+    
+    # 启动Docker服务
+    $ systemctl start docker && systemctl enable docker
 ```
 
 
 
-## 二、项目配置
+::: tip Ubuntu
+
+2. 如果你是Ubuntu操作系统，请使用如下命令：
+
+:::
+
+```bash
+ 	# 安装依赖包
+    $ sudo apt-get install  -y \
+            apt-transport-https \
+            ca-certificates \
+            curl \
+            gnupg-agent \
+            software-properties-common
+
+    # 添加Docker官方GPG key
+    $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+    # 添加docker仓库
+    $ sudo add-apt-repository -y \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
+
+    # 更新包索引
+    $ sudo apt-get update
+
+    # 安装Docker
+    $ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose
+```
+
+配置阿里云镜像加速，阿里云镜像加速地址： https://ably8t50.mirror.aliyuncs.com：
+
+```bash
+$ vim  /etc/docker/daemon.json
+{
+  "registry-mirrors": ["https://ably8t50.mirror.aliyuncs.com"]
+}
+
+加载配置重启服务
+$ systemctl daemon-reload
+$ systemctl restart docker
+
+卸载
+$ systemctl stop docker
+$ yum -y remove docker-ce
+$ rm -rf /var/lib/docker
+```
+
+
+
+## 二、部署FISCO BCOS
+
+拉取官网的FISCO BCOS2.9.0或者是3.6.0，这里使用的是FISCO BCOS2.9.0版本的区块链，所以直接拉取安装包：
+
+```bash
+[root@centos:~/work]# curl -#LO https://github.com/FISCO-BCOS/FISCO-BCOS/releases/download/v2.9.1/build_chain.sh && chmod u+x build_chain.sh
+```
+
+使用建链脚本部署区块链网络：
+
+```bash
+[root@centos:~/work]#  bash build_chain.sh -l 127.0.0.1:4 -p 30300,20200,8545
+[root@centos:~/work]#  bash nodes/127.0.0.1/start_all.sh 
+try to start node0
+try to start node1
+try to start node2
+try to start node3
+ node2 start successfully pid=2238732
+ node0 start successfully pid=2238728
+ node1 start successfully pid=2238735
+ node3 start successfully pid=2238738
+
+[root@centos:~/work]#   curl -#LO https://gitee.com/FISCO-BCOS/console/raw/master/tools/download_console.sh && bash download_console.sh
+[root@centos:~/work]#  cp console/conf/config-example.toml console/conf/config.toml 
+[root@centos:~/work]#  cp nodes/127.0.0.1/sdk/* console/conf/
+[root@centos:~/work]#  bash console/start.sh 
+=============================================================================================
+Welcome to FISCO BCOS console(2.9.1)!
+Type 'help' or 'h' for help. Type 'quit' or 'q' to quit console.
+ ________ ______  ______   ______   ______       _______   ______   ______   ______  
+|        |      \/      \ /      \ /      \     |       \ /      \ /      \ /      \ 
+| $$$$$$$$\$$$$$|  $$$$$$|  $$$$$$|  $$$$$$\    | $$$$$$$|  $$$$$$|  $$$$$$|  $$$$$$\
+| $$__     | $$ | $$___\$| $$   \$| $$  | $$    | $$__/ $| $$   \$| $$  | $| $$___\$$
+| $$  \    | $$  \$$    \| $$     | $$  | $$    | $$    $| $$     | $$  | $$\$$    \ 
+| $$$$$    | $$  _\$$$$$$| $$   __| $$  | $$    | $$$$$$$| $$   __| $$  | $$_\$$$$$$\
+| $$      _| $$_|  \__| $| $$__/  | $$__/ $$    | $$__/ $| $$__/  | $$__/ $|  \__| $$
+| $$     |   $$ \\$$    $$\$$    $$\$$    $$    | $$    $$\$$    $$\$$    $$\$$    $$
+ \$$      \$$$$$$ \$$$$$$  \$$$$$$  \$$$$$$      \$$$$$$$  \$$$$$$  \$$$$$$  \$$$$$$
+
+=============================================================================================
+[group0]: /apps> 
+[group0]: /apps> getGroupInfo
+{
+    "chainID":"chain0",
+    "groupID":"group0",
+    ······
+}
+```
+
+
+
+## 三、部署智能合约
+
+拉取WeBASE-Front前置平台并部署，拷贝当前的区块链网络的节点证书信息，然后部署智能合约。
+
+```bash
+[root@centos:~/work]# wget https://osp-1257653870.cos.ap-guangzhou.myqcloud.com/WeBASE/releases/download/v1.5.5/webase-front.zip
+[root@centos:~/work]# unzip webase-front.zip
+[root@centos:~/work]# cp /work/nodes/127.0.0.1/sdk/* webase-font/conf/
+[root@centos:~/work]# cd webase-front && bash start.sh 
+```
+
+访问当前的http://localhost:5002/WeBASE-Front平台。
+
+![image-20240414182805386](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240414182805386.png)
+
+打开合约管理的测试用户，创建合约管理员Admin。
+
+![image-20240414183048922](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240414183048922.png)
+
+打开合约管理的合约IDE，上传智能合约，然后点击CharityController进行编译部署。这里选择刚刚创建的admin账户部署智能合约。然后生成如下的合约地址以及合约的ABI和合约的BIN文件。
+
+![image-20240414183016214](https://blog-1304715799.cos.ap-nanjing.myqcloud.com/imgs/image-20240414183016214.png)
+
+
+
+## 四、项目配置
 
 Docker Compose 文件定义了几个不同的服务，每个服务都有自己的配置信息。需要分别配置如下服务配置。
 
@@ -180,18 +202,18 @@ Docker Compose 文件定义了几个不同的服务，每个服务都有自己�
   - `DB_USER`: 数据库用户名。
   - `DB_PWD`: 数据库用户密码。
   - `DB_NAME`: 数据库名称。
-  
+
 - **Redis 配置:**
   - `REDIS_HOST`: Redis 主机名。
   - `REDIS_PORT`: Redis 端口。
   - `REDIS_PWD`: Redis 密码。
-  
+
 - **RabbitMQ 配置:**
   - `RABBITMQ_USERNAME`: RabbitMQ 用户名。
   - `RABBITMQ_PASSWORD`: RabbitMQ 用户密码。
   - `RABBITMQ_PORT`: RabbitMQ 端口。
   - `RABBITMQ_HOST`: RabbitMQ 主机名。
-  
+
 - **邮箱配置:**
 - `EMAIL_USERNAME`: 邮箱用户名。
   - `EMAIL_PASSWORD`: 邮箱密码。
@@ -200,7 +222,7 @@ Docker Compose 文件定义了几个不同的服务，每个服务都有自己�
   - `CHAIN_PEERS`: 区块链对等节点地址。
   - `CONTRACT_PRIVATE_KEY`: 合约私钥。
   - `CONTRACT_ADDRESS`: 合约地址。
-  
+
 - **COS 配置:**
   - `COS_SECRET`: COS 密钥。
   - `COS_SECRET_KEY`: COS 密钥密钥。
@@ -363,7 +385,7 @@ services:
 
 
 
-## 四、访问项目
+## 五、访问项目
 
 访问http://localhost访问前端是否正常。
 

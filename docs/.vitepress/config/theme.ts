@@ -23,17 +23,12 @@ export const themeConfig: DefaultTheme.Config = {
     next: '下一篇'
   },
   // 编辑链接配置
-  editLink: {
-    pattern: 'https://github.com/Charles7c/charles7c.github.io/edit/main/docs/:path',
-    text: '不妥之处，敬请雅正'
-  },
+
   // 搜索配置（二选一）
   search: {
-    provider: 'algolia',
-    options: algoliaSearchOptions,
     // 本地离线搜索
-    // provider: 'local',
-    // options: localSearchOptions
+    provider: 'local',
+    options: localSearchOptions
   },
   // 导航栏右侧社交链接配置
   socialLinks: [
@@ -70,13 +65,13 @@ export const themeConfig: DefaultTheme.Config = {
   },
   // 自定义扩展: 文章版权配置
   copyrightConfig: {
-    license: '署名-相同方式共享 4.0 国际 (CC BY-SA 4.0)',
-    licenseLink: 'http://creativecommons.org/licenses/by-sa/4.0/'
+    license: '',
+    licenseLink: ''
   },
   // 自定义扩展: 评论配置
   commentConfig: {
     type: 'gitalk',
-    showComment: true // 是否显示评论
+    showComment: false // 是否显示评论
   },
   // 自定义扩展: 页脚配置
   footerConfig: {
